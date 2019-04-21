@@ -1,4 +1,6 @@
 import processing.core.PVector;
+import br.unifor.si.rosos.*;
+import br.unifor.si.rosos.testeTeam.TesteTeam;
 import processing.core.PApplet;
 
 public class Main extends PApplet{
@@ -14,16 +16,21 @@ public class Main extends PApplet{
     public void settings(){
         controller = new GameController(new Match(
                 // Team A Class
-                CustomTeamA.class,
+                TesteTeam.class,
                 // Team B Class
-                CustomTeamB.class,
+                CustomEmptyTeam.class,
+                //CustomEmptyTeam.class,
                 // Number of robots on each side
-                2
+                1
 
         ));
 
-        controller.getSimulator().setFieldSize(2.44f, 1.82f);
+        //controller.getSimulator().setFieldSize(2.44f, 1.82f);
+        //controller.getSimulator().setFieldSize(1.05f, 0.68f);
+        controller.getSimulator().setFieldSize(3.15f, 2.04f);
+        controller.resetGame();
         size((int)controller.getWidth(SCALE) + 200, (int)controller.getHeight(SCALE) + 100);
+
     }
 
     public void draw(){
@@ -58,9 +65,9 @@ public class Main extends PApplet{
         }
 
         if(closest != null){
-            closest.position.set(mousePoint);
-            closest.speed = new PVector();
-            closest.accel = new PVector();
+            closest.getPosition().set(mousePoint);
+            closest.setSpeed(new PVector());
+            closest.setAccel(new PVector());
         }
     }
 
@@ -88,7 +95,7 @@ public class Main extends PApplet{
             debug += "\nisRunning:"+controller.isRunning();
             debug += "\nController Robots:"+controller.robots.size();
             for(Robot r:controller.robots)
-                debug += "\n\t"+r+" ["+r.position.x+","+r.position.y+"]";
+                debug += "\n\t"+r+" ["+r.getPosition().x+","+r.getPosition().y+"]";
 
             debug += "\nSimulatables:"+controller.getSimulator().simulatables.size();
             for(Simulatable r:controller.getSimulator().simulatables)
