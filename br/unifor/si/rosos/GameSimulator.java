@@ -74,10 +74,12 @@ public class GameSimulator implements Drawable{
 		walls[2] = new Block(0,       FIELD_H / 2, WALL_TICK, FIELD_H + WALL_TICK); // LEFT
 		walls[3] = new Block(FIELD_W, FIELD_H / 2, WALL_TICK, FIELD_H + WALL_TICK); // RIGHT
 
+		/**
 		for(int i = 0; i < 4; i ++){
 			simulatables.add(walls[i]);
 			drawables.add(walls[i]);
 		}
+		*/
 
 		// Make Neutral Spots
 		float xZero = FIELD_W/2;

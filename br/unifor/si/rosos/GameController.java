@@ -48,13 +48,13 @@ public class GameController implements Drawable, Runnable{
 	/*
 		Stores Points for both Sides
 	*/
-	private int goalsLeft = 0;
-	private int goalsRight = 0;
+	private static int goalsLeft = 0;
+	private static int goalsRight = 0;
 
 	/*
 		Get points for one side
 	*/
-	public int getPointsFor(TeamSide side){
+	public static int getPointsFor(TeamSide side) {
 		if(side == TeamSide.LEFT)
 			return goalsLeft;
 		else
